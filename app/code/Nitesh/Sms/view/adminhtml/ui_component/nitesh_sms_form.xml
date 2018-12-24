@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">dac_recipes_form.recipes_form_data_source</item>
+            <item name="deps" xsi:type="string">dac_recipes_form.recipes_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">New Recipe</item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+        </item>
+
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Dac\Recipes\Block\Adminhtml\Recipe\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">Dac\Recipes\Block\Adminhtml\Recipe\Edit\DeleteButton</item>
+            <item name="reset" xsi:type="string">Dac\Recipes\Block\Adminhtml\Recipe\Edit\ResetButton</item>
+            <item name="save" xsi:type="string">Dac\Recipes\Block\Adminhtml\Recipe\Edit\SaveButton</item>
+        </item>
+    </argument>
+
+    <dataSource name="recipes_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Dac\Recipes\Model\Recipe\DataProvider</argument>
+            <argument name="name" xsi:type="string">recipes_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">recipes_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <fieldset name="recipe">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">New Recipes</item>
+            </item>
+        </argument>
+
+        <!-- This field represents form id and is hidden -->
+        <field name="recipes_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
+        <field name="recipes_title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Title</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+
+                </item>
+            </argument>
+        </field>
+
+
+        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
+        <field name="recipes_short_description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Short Description</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="dataScope" xsi:type="string">recipes_short_description</item>
+                    <item name="sortOrder" xsi:type="number">2</item>
+                    <item name="rows" xsi:type="number">5</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+
+                </item>
+            </argument>
+        </field>
+
+
+
+
+
+        <field name="recipes_preparation_time">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Preparation Time</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">3</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="recipes_ingredients" >
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Ingredients</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <!--<item name="formElement" xsi:type="string">input</item>-->
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="dataScope" xsi:type="string">recipes_ingredients</item>
+                    <item name="sortOrder" xsi:type="number">4</item>
+                    <item name="rows" xsi:type="number">5</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+     
+        <field name="recipes_methods">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Method</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="dataScope" xsi:type="string">recipes_methods</item>
+                    <item name="sortOrder" xsi:type="number">5</item>
+                    <item name="rows" xsi:type="number">5</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+
+                </item>
+            </argument>
+
+        </field>
+
+        <field name="recipes_image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="label" xsi:type="string" translate="true">Image</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Dac_Recipes/image-preview</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="recipes/test/upload"/>
+                    </item>
+                    <item name="sortOrder" xsi:type="number">6</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="recipes_youtube">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">YouTube</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">link</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">7</item>
+                    
+                </item>
+            </argument>
+        </field>
+
+        <field name="recipes_other_recipes">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Other Recipes </item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">link</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">8</item>
+                    
+                </item>
+            </argument>
+        </field>
+
+        <field name="recipes_product_used">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Product Used </item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">link</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">9</item>
+                    
+                </item>
+            </argument>
+        </field>
+
+        <field name="recipes_download_recipes">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Download Recipe </item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">link</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                   
+                </item>
+            </argument>
+        </field>
+
+        <field name="recipes_tag_line">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Tag Line </item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">link</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">11</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+
+
+        <field name="recipes_banner_image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="label" xsi:type="string" translate="true">Banner Image</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Dac_Recipes/image-preview</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="recipes/test/uploadBanner"/>
+                    </item>
+                    <item name="sortOrder" xsi:type="number">12</item>
+                </item>
+            </argument>
+        </field>
+        
+                <field name="recipes_is_user_recipes">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">13</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="source" xsi:type="string">recipes_is_user_recipes</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="label" xsi:type="string" translate="true">Is User Recipe</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </field>
+
+
+        <field name="recipes_user_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">User Name </item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">link</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">14</item>
+                    
+                </item>
+            </argument>
+        </field>
+
+        <field name="recipes_user_location">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">User Location </item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">link</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">15</item>
+                    
+                </item>
+            </argument>
+        </field>
+
+
+        <field name="recipes_slug">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Slug </item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">link</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="sortOrder" xsi:type="number">16</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+
+
+     
+        
+        <field name="recipes_category_name">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Dac\Recipes\Block\CategoryList</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Category</item>
+                    <item name="componentType" xsi:type="string">field</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Catalog/js/components/new-category</item>
+                    <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                    <item name="dataScope" xsi:type="string">recipes_category_name</item>
+                    <item name="filterOptions" xsi:type="boolean">true</item>
+                    <item name="showCheckbox" xsi:type="boolean">true</item>
+                    <item name="disableLabel" xsi:type="boolean">false</item>
+                    <item name="multiple" xsi:type="boolean">true</item>
+                    <!--<item name="levelsVisibility" xsi:type="number">1</item>-->
+                    <item name="sortOrder" xsi:type="number">17</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="listens" xsi:type="array">
+                        <item name="${ $.namespace }.${ $.namespace }:responseData" xsi:type="string">setParsed</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        
+
+
+    </fieldset>
+</form>

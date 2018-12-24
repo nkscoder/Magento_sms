@@ -1,0 +1,7 @@
+
+        <referenceContainer name="content">
+
+            <block class="Scaledesk\Trails\Block\FeaturedTrails"
+                   name="post.featuredTrails"
+                   template="Scaledesk_Trails::post/featured.phtml" />
+        </referenceContainer>

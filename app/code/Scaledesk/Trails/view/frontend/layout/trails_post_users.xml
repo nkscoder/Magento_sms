@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+    <referenceContainer name="content">
+
+
+        <block class="Scaledesk\Trails\Block\Users"
+               name="post.users"
+               template="Scaledesk_Trails::post/users.phtml" />
+
+        <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+        <!--<block class="Scaledesk\Trails\Block\Session"-->
+               <!--name="posts.users"-->
+               <!--template="Scaledesk_Trails::post/users.phtml" />-->
+    </referenceContainer>
+</body>
+
+
+</page>
